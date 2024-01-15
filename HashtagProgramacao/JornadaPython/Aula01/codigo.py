@@ -28,3 +28,16 @@ pyautogui.write(link)
 pyautogui.press("enter")
     # esperar 5 segundos
 time.sleep(5)
+
+# Passo 2 - Fazer login
+    # clicar no campo de e-mail
+pyautogui.click(x=751, y=470)
+    # digitar o email
+pyautogui.write("email@gmail.com")
+    # passar para o campo de senha
+pyautogui.press("tab")
+    # digitar a senha
+pyautogui.write("minhaSenha")
+    # apertar o botão logar
+pyautogui.click(x=946, y=676)
+time.sleep(3)
