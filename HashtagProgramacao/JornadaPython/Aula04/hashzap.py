@@ -8,10 +8,18 @@ def main(pagina):
 # Botão de Iniciar o chat
     chat = ft.Column()
 
+    # criar o tunel de comunicação
+    def enviar_mensagem_tunel(informacoes):
+        chat.controls.append(ft.Text(informacoes))
+        pagina.update()
+
+    pagina.pubsub.subscribe(enviar_mensagem_tunel)
+
     def enviar_mensagem(evento):
         # colocar o nome do usuário + mensagem 
         texto_campo_mensagem = f"{nome_usuario.value}: {campo_mensagem.value}"
-        chat.controls.append(ft.Text(texto_campo_mensagem))
+        # tunel
+        pagina.pubsub.send_all(texto_campo_mensagem)
         # limpar o campo_mensagem
         campo_mensagem.value = ""
         pagina.update()
@@ -31,7 +39,7 @@ def main(pagina):
         pagina.add(linha_mensagem)
         # adicionar que usuario entrou no chat
         texto = f"{nome_usuario.value} entrou no chat"
-        chat.controls.append(ft.Text(texto))
+        pagina.pubsub.send_all(texto)
         pagina.update()
     # Popup
         # Bem vindo ao Hashzap
@@ -58,4 +66,5 @@ def main(pagina):
     botao_iniciar = ft.ElevatedButton("Iniciar chat", on_click=iniciar_chat)
     pagina.add(botao_iniciar)
 
-ft.app(main)
+# ft.app(main)
+ft.app(main, view=ft.WEB_BROWSER)
