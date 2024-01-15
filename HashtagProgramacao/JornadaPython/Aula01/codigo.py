@@ -47,3 +47,35 @@ time.sleep(3)
 import pandas
 
 tabela = pandas.read_csv("produtos.csv")
+
+# Passo 4 - Cadastrar um produto
+# Passo 5 - Repetir isso até acabar a base de dados
+for linha in tabela.index:
+        # clicar no campo do produto
+    pyautogui.click(x=725, y=323)    
+        # escrever o código do produto e descer de campo
+    codigo = tabela.loc[linha, "codigo"]
+    pyautogui.write(codigo)
+    pyautogui.press("tab")
+        # escrever a marca e descer de campo
+    pyautogui.write(tabela.loc[linha, "marca"])
+    pyautogui.press("tab")
+        # escrever o tipo e descer de campo
+    pyautogui.write(tabela.loc[linha, "tipo"])
+    pyautogui.press("tab")
+        # escrever o categoria e descer de campo
+    pyautogui.write(tabela.loc[linha, "categoria"])
+    pyautogui.press("tab")
+        # escrever o preço e descer de campo
+    pyautogui.write(str(tabela.loc[linha, "preco_unitario"]))
+    pyautogui.press("tab")
+        # escrever o custo e descer de campo
+    pyautogui.write(str(tabela.loc[linha, "custo"]))
+    pyautogui.press("tab")
+        # escrever o obs e descer de campo
+    obs = tabela.loc[linha, "obs"]
+    if not pandas.isna(obs):
+        pyautogui.write(obs)
+        # apertar o botão enviar
+    pyautogui.press("tab")
+    pyautogui.press("enter")
