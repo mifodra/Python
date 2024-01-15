@@ -41,3 +41,9 @@ pyautogui.write("minhaSenha")
     # apertar o botão logar
 pyautogui.click(x=946, y=676)
 time.sleep(3)
+
+# Passo 3 - Importar a base de dados
+# pip install pandas numpy openpyxl
+import pandas
+
+tabela = pandas.read_csv("produtos.csv")
