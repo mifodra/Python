@@ -1,0 +1,16 @@
+Criar ambiente virtual para não ter conflito entrer projetos:
+    python -m venv venv
+
+    Ativar:
+        venv\Scripts\Activate
+
+        Caso algum comando retorne um erro de permissão execute o código e tente novamente:
+        Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned
+
+Instalar Django Framework --> pip install django
+Instalar Biblioteca Pillow (processamento de imagens) --> pip install pillow 
+
+Iniciar o projeto Django:
+    django-admin startproject study_async . (study_async é o nome do projeto)
+        - pasta com o nome do projeto
+        - manage.py 
