@@ -1,0 +1,10 @@
+Frontend --> usuário vê
+Backend --> lógica por trás do site
+
+Frameworks:
+    - Django
+    - Flask
+    - Flet (pip install flet)
+        - sites
+        - programas de computador
+        - aplicativos de celular
