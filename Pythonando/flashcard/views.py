@@ -113,3 +113,9 @@ def listar_desafio(request):
     # TODO: desenvolver os status
     # TODO: desenvolver os filtros
     return render(request, 'listar_desafio.html', {'desafios': desafios})
+
+def desafio(request, id):
+    desafio = Desafio.objects.get(id=id)
+    if request.method == "GET":
+        return render(request, 'desafio.html', {'desafio': desafio})
+    
