@@ -105,5 +105,11 @@ def iniciar_desafio(request):
             desafio.flashcards.add(flashcard_desafio)
 
         desafio.save()
-        
-        return HttpResponse("Teste")
+
+        return redirect('/flashcard/listar_desafio/')
+    
+def listar_desafio(request):
+    desafios = Desafio.objects.filter(user=request.user)
+    # TODO: desenvolver os status
+    # TODO: desenvolver os filtros
+    return render(request, 'listar_desafio.html', {'desafios': desafios})
