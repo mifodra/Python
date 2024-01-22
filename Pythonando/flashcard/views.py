@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from .models import Categoria, Flashcard
 from django.contrib.messages import constants
 from django.contrib import messages
+from django.http import HttpResponse
 
 # Create your views here.
 def novo_flashcard(request):
@@ -49,3 +50,11 @@ def novo_flashcard(request):
 
         messages.add_message(request, constants.SUCCESS, "Flashcard cadastrado com sucesso")
         return redirect('/flashcard/novo_flashcard')
+
+def deletar_flashcard(request, id):
+    flashcard = Flashcard.objects.get(id=id)
+    flashcard.delete()
+    messages.add_message(
+        request, constants.SUCCESS, 'Flashcard deletado com sucesso!'
+    )
+    return redirect('/flashcard/novo_flashcard/')
